@@ -25,7 +25,7 @@ const scraiping_1 = __importDefault(require("./routes/scraiping"));
 //var app = express();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: 'https://nikya198.github.io',
+    origin: process.env.URL,
     credentials: true,
     optionsSuccessStatus: 200, //レスポンスstatusを200に設定
 }));
@@ -41,6 +41,7 @@ app.use('/', index_1.default);
 app.use('/users', users_1.default);
 app.use('/master', master_1.default);
 app.use('/scraiping', scraiping_1.default);
+console.log(process.env.URL);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next((0, http_errors_1.default)(404));

@@ -26,7 +26,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://nikya198.github.io', //アクセス許可するオリジン
+    origin: process.env.URL, //アクセス許可するオリジン
     credentials: true, //レスポンスヘッダーにAccess-Control-Allow-Credentials追加
     optionsSuccessStatus: 200, //レスポンスstatusを200に設定
   })
@@ -46,6 +46,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/master', master);
 app.use('/scraiping', scraiping);
+console.log(process.env.URL);
 
 // catch 404 and forward to error handler
 app.use(function (req: Request, res: Response, next: NextFunction) {
